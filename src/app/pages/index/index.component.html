@@ -1,0 +1,28 @@
+<div class="row">
+<div class="search  mt-4">
+    <input class="search form-control" [(ngModel)]="searchText" type="text" name="search" placeholder="search by name ,id or country" >
+
+</div>
+
+<app-form (userDetails)="handelEvent($event)"></app-form>
+
+<table class="table table-hover table-striped" *ngIf="users.length>0">
+<thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Country</th>
+    </tr>
+</thead>
+<tbody>
+    <tr  *ngFor= "let user of users | filter:searchText ; let i = index">
+     <td> {{user.id}} </td>
+     <td> {{user.name}} </td>
+     <td> {{user.country}} </td>
+     <button class="btn btn-primary ms-3 me-3" (click)="editRow(i)">Ubdate</button>
+     <button class="btn btn-danger" (click)="deleteRow(i)" >Delete</button>
+    </tr>
+</tbody>
+
+</table>
+</div>
